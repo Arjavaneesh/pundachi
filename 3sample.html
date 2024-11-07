@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Quiz</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff;
+            padding: 20px;
+        }
+        .quiz-container {
+            max-width: 600px;
+            margin: auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .question {
+            margin-bottom: 15px;
+        }
+        .result {
+            font-size: 18px;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="quiz-container">
+        <h2>Online Quiz</h2>
+        <form id="quizForm">
+            <div class="question">
+                <p>1. What is the capital of France?</p>
+                <input type="radio" name="q1" value="Paris"> Paris<br>
+                <input type="radio" name="q1" value="London"> London<br>
+                <input type="radio" name="q1" value="Rome"> Rome<br>
+            </div>
+
+            <div class="question">
+                <p>2. Which planet is known as the Red Planet?</p>
+                <input type="radio" name="q2" value="Mars"> Mars<br>
+                <input type="radio" name="q2" value="Venus"> Venus<br>
+                <input type="radio" name="q2" value="Jupiter"> Jupiter<br>
+            </div>
+
+            <div class="question">
+                <p>3. Who wrote 'Hamlet'?</p>
+                <input type="radio" name="q3" value="Shakespeare"> William Shakespeare<br>
+                <input type="radio" name="q3" value="Dickens"> Charles Dickens<br>
+                <input type="radio" name="q3" value="Hemingway"> Ernest Hemingway<br>
+            </div>
+
+            <input type="button" value="Submit" onclick="checkAnswers()">
+        </form>
+
+        <div class="result" id="result"></div>
+    </div>
+
+    <script>
+        function checkAnswers() {
+            var score = 0;
+            var totalQuestions = 3;
+
+            var q1 = document.querySelector('input[name="q1"]:checked');
+            var q2 = document.querySelector('input[name="q2"]:checked');
+            var q3 = document.querySelector('input[name="q3"]:checked');
+
+            if (q1 && q1.value === "Paris") score++;
+            if (q2 && q2.value === "Mars") score++;
+            if (q3 && q3.value === "Shakespeare") score++;
+
+            var result = document.getElementById('result');
+            result.innerHTML = "You scored " + score + " out of " + totalQuestions + ".";
+        }
+    </script>
+</body>
+</html>
